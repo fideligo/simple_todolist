@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_todolist/add_task.dart';
 import 'package:simple_todolist/dashboard.dart';
 
 class PrePage extends StatelessWidget {
@@ -14,6 +15,27 @@ class PrePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Remove this after finish
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AddTask()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: const Color(0xFF5038BC),
+                    foregroundColor: Colors.white),
+                child: const Text('testing',
+                    style: TextStyle(
+                        fontFamily: 'Poppins', fontWeight: FontWeight.w600)),
+              ),
+            ),
+            // Remove after finish [UNTIL HERE]
             Container(
               width: 250,
               height: 250,
@@ -57,7 +79,7 @@ class PrePage extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Poppins', fontWeight: FontWeight.w600)),
               ),
-            )
+            ),
           ],
         ),
       ),
