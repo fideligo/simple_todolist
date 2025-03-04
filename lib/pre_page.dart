@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_todolist/add_task.dart';
 import 'package:simple_todolist/dashboard.dart';
+import 'package:simple_todolist/todolist.dart';
 
 class PrePage extends StatelessWidget {
   const PrePage({super.key});
@@ -22,7 +23,7 @@ class PrePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const AddTask()),
+                    MaterialPageRoute(builder: (context) => Todolistpage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

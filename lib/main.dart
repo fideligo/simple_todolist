@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:simple_todolist/pre_page.dart';
 
@@ -11,9 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent)); //statusbar hp
     return const MaterialApp(
+      debugShowCheckedModeBanner: false, // debug wm
       home: PrePage(),
     );
   }
 }
-
