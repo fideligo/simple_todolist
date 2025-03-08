@@ -1,0 +1,2 @@
+C:/Users/Fideligo/Documents/Kuliah/RISTEK/flutter/simple_todolist/android/app/.cxx/Debug/6o1x1i4i/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Fideligo/Documents/Kuliah/RISTEK/flutter/simple_todolist/android/app/.cxx/Debug/6o1x1i4i/armeabi-v7a/CMakeFiles/rebuild_cache.dir

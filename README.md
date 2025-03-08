@@ -15,7 +15,10 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+mempelajari:
+    - cara baca docs flutter (https://docs.flutter.dev/)
 
 sources:
     - https://stackoverflow.com/questions/51948252/hide-appbar-on-scroll-flutter
     - Flutter ToDo App Tutorial for Beginners - Pradip Debnath (https://www.youtube.com/watch?v=K4P5DZ9TRns)
+    - https://docs.flutter.dev/
