@@ -2,15 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:simple_todolist/pre_page.dart';
 import 'package:simple_todolist/dashboard.dart';
 import 'package:simple_todolist/model/todo_class.dart';
+import 'package:simple_todolist/model/todo_class.dart';
 
 class EditTask extends StatefulWidget {
-  const EditTask({super.key});
+  final ToDoClass task;
+
+  const EditTask({super.key, required this.task});
 
   @override
   State<EditTask> createState() => _EditTaskState();
 }
 
 class _EditTaskState extends State<EditTask> {
+  @override
+  void initState() {
+    super.initState();
+    _titleController.text = widget.task.todoText;
+    _startDateController.text =
+        widget.task.startDate ?? ''; // Handle null safely
+    _endDateController.text = widget.task.endDate ?? '';
+    _descriptionController.text = widget.task.description ?? '';
+    _selectedCategory =
+        widget.task.todoType == "Priority" ? "Priority Task" : "Daily Task";
+  }
+
   final todoLists = ToDoClass.todoList();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _startDateController = TextEditingController();
@@ -22,7 +37,7 @@ class _EditTaskState extends State<EditTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[500],
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
@@ -105,14 +120,8 @@ class _EditTaskState extends State<EditTask> {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         minimumSize: const Size(double.infinity, 0),
                       ),
-                      onPressed: () {
-                        if (_titleController.text.isEmpty) {
-                          _TodoAdd("New Task");
-                        } else {
-                          _TodoAdd(_titleController.text);
-                        }
-                      },
-                      child: const Text('Create Task'),
+                      child: const Text('Save Changes'),
+                      onPressed: _TodoEdit,
                     ),
                   ],
                 ),
@@ -260,13 +269,17 @@ class _EditTaskState extends State<EditTask> {
     }
   }
 
-  void _TodoAdd(String TodoTaskName) {
-    final newTask = ToDoClass(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      todoText: TodoTaskName,
+  void _TodoEdit() {
+    final updatedTask = ToDoClass(
+      id: widget.task.id, // Keep same ID
+      todoText: _titleController.text,
       todoType: _selectedCategory == "Priority Task" ? "Priority" : "Daily",
+      isDone: widget.task.isDone,
+      startDate: _startDateController.text, // Save updated start date
+      endDate: _endDateController.text, // Save updated end date
+      description: _descriptionController.text, // Save updated description
     );
 
-    Navigator.pop(context, newTask); // Pass new task back to Dashboard
+    Navigator.pop(context, updatedTask); // Send updated task back to Dashboard
   }
 }

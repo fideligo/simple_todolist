@@ -22,7 +22,7 @@ class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[500],
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,

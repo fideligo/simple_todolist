@@ -17,25 +17,25 @@ class PrePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Remove this after finish
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EditTask()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: const Color(0xFF5038BC),
-                    foregroundColor: Colors.white),
-                child: const Text('testing',
-                    style: TextStyle(
-                        fontFamily: 'Poppins', fontWeight: FontWeight.w600)),
-              ),
-            ),
+            // SizedBox(
+            //   width: double.infinity,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => EditTask()),
+            //       );
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //         shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(10)),
+            //         backgroundColor: const Color(0xFF5038BC),
+            //         foregroundColor: Colors.white),
+            //     child: const Text('testing',
+            //         style: TextStyle(
+            //             fontFamily: 'Poppins', fontWeight: FontWeight.w600)),
+            //   ),
+            // ),
             // Remove after finish [UNTIL HERE]
             Container(
               width: 250,

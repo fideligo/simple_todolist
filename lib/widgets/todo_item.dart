@@ -5,64 +5,81 @@ class ToDoItem extends StatelessWidget {
   final ToDoClass todoVariable;
   final Function(ToDoClass) onToDoChanged;
   final VoidCallback onDelete;
+  final VoidCallback onLongPress;
+  final ToDoClass? selectedTask;
 
   const ToDoItem({
     super.key,
     required this.todoVariable,
+    required this.selectedTask,
     required this.onToDoChanged,
     required this.onDelete,
+    required this.onLongPress,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-            color: Color(0xFF5038BC).withOpacity(0.1),
-            width: 0.5), // Border ditambahkan di sini
-        boxShadow: [
-          BoxShadow(
-              color: Color(0xFF5038BC),
-              offset: Offset(0, 0),
-              blurRadius: 1,
-              blurStyle: BlurStyle.outer),
-        ],
-      ),
-      child: ListTile(
-        onTap: () {
-          onToDoChanged(todoVariable);
-        },
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        tileColor: Colors.white,
-        leading: Icon(
-          todoVariable.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-          color: Color(0xFF5038BC),
-        ),
-        title: Text(
-          todoVariable.todoText,
-          style: TextStyle(
-            fontSize: 14,
-            fontFamily: 'Poppins',
-            decoration: todoVariable.isDone ? TextDecoration.lineThrough : null,
-          ),
-        ),
-        trailing: Container(
-          margin: const EdgeInsets.symmetric(vertical: 12),
-          height: 35,
-          width: 35,
+    bool isSelected = selectedTask == todoVariable;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click, // Show pointer on hover
+      child: GestureDetector(
+        onLongPress: onLongPress,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(5),
+            color: isSelected ? const Color(0xFFEDE7F6) : Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: const Color(0xFF5038BC).withOpacity(0.3),
+              width: isSelected ? 2 : 0.5,
+            ),
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: const Color(0xFF5038BC).withOpacity(0.3),
+                      offset: const Offset(0, 3),
+                      blurRadius: 6,
+                    ),
+                  ]
+                : [],
           ),
-          child: IconButton(
-            color: Colors.white,
-            iconSize: 18,
-            icon: const Icon(Icons.delete),
-            onPressed: onDelete,
+          child: ListTile(
+            onTap: () {
+              onToDoChanged(todoVariable);
+            },
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            tileColor: Colors.transparent,
+            trailing: Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: todoVariable.isDone
+                      ? Colors.grey
+                      : const Color(0xFF5038BC),
+                  width: 2,
+                ),
+              ),
+              child: !todoVariable.isDone
+                  ? const Icon(Icons.circle, size: 20, color: Color(0xFF5038BC))
+                  : null,
+            ),
+            title: Text(
+              todoVariable.todoText,
+              style: TextStyle(
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                fontSize: 14,
+                fontFamily: 'Poppins',
+                color:
+                    todoVariable.isDone ? Colors.grey : const Color(0xFF5038BC),
+              ),
+            ),
           ),
         ),
       ),

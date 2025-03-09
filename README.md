@@ -17,6 +17,13 @@ samples, guidance on mobile development, and a full API reference.
 
 mempelajari:
     - cara baca docs flutter (https://docs.flutter.dev/)
+    - leading dan trailing
+    - cara membuat button
+    - cara membuat textfield
+    - cara membuat checkbox
+    - cara membuat listview
+    
+    
 
 sources:
     - https://stackoverflow.com/questions/51948252/hide-appbar-on-scroll-flutter

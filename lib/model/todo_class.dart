@@ -3,12 +3,18 @@ class ToDoClass {
   String todoText;
   String todoType;
   bool isDone;
+  String? startDate; // Nullable, in case old tasks don't have it
+  String? endDate;
+  String? description;
 
   ToDoClass({
     required this.id,
     required this.todoText,
-    this.todoType = "Daily",
     this.isDone = false,
+    this.todoType = "Daily",
+    this.startDate, // New fields
+    this.endDate,
+    this.description,
   });
 
   static List<ToDoClass> todoList() {
