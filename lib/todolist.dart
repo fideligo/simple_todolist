@@ -44,11 +44,12 @@ class _TodolistpageState extends State<Todolistpage> {
                                     fontSize: 22))),
                         for (ToDoClass TodosInsideList in _foundToDo.reversed)
                           ToDoItem(
-                            todoVariable: TodosInsideList,
+                            todoVariable: TodosInsideList,        
                             onToDoChanged:
                                 _ToDoChangeListener, // Pass function correctly
                             onDelete: () => _ToDoDelete(TodosInsideList
-                                .id), // Implement delete logic later
+                                .id),
+                                 // Implement delete logic later
                           )
                       ],
                     ),

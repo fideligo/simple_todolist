@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_todolist/add_task.dart';
 import 'package:simple_todolist/dashboard.dart';
-import 'package:simple_todolist/todolist.dart';
+import 'edit_task.dart';
 
 class PrePage extends StatelessWidget {
   const PrePage({super.key});
@@ -23,7 +23,7 @@ class PrePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Todolistpage()),
+                    MaterialPageRoute(builder: (context) => EditTask()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -87,3 +87,4 @@ class PrePage extends StatelessWidget {
     );
   }
 }
+// YAPPING

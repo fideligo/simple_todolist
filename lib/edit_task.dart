@@ -3,14 +3,14 @@ import 'package:simple_todolist/pre_page.dart';
 import 'package:simple_todolist/dashboard.dart';
 import 'package:simple_todolist/model/todo_class.dart';
 
-class AddTask extends StatefulWidget {
-  const AddTask({super.key});
+class EditTask extends StatefulWidget {
+  const EditTask({super.key});
 
   @override
-  State<AddTask> createState() => _AddTaskState();
+  State<EditTask> createState() => _EditTaskState();
 }
 
-class _AddTaskState extends State<AddTask> {
+class _EditTaskState extends State<EditTask> {
   final todoLists = ToDoClass.todoList();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _startDateController = TextEditingController();
@@ -48,7 +48,7 @@ class _AddTaskState extends State<AddTask> {
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Text(
-                      'Add Task',
+                      'Edit Task',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
