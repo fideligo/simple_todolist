@@ -8,7 +8,7 @@ class TaskSection extends StatelessWidget {
   final List<ToDoClass> tasks;
   final Function(ToDoClass) onToDoChanged;
   final Function(String) onDelete;
-  final Function(ToDoClass) onLongPress; // New callback
+  final Function(ToDoClass) onLongPress;
 
   const TaskSection({
     super.key,

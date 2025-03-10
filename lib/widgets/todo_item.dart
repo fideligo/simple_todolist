@@ -22,7 +22,7 @@ class ToDoItem extends StatelessWidget {
     bool isSelected = selectedTask == todoVariable;
 
     return MouseRegion(
-      cursor: SystemMouseCursors.click, // Show pointer on hover
+      cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onLongPress: onLongPress,
         child: AnimatedContainer(

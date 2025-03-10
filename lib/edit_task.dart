@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_todolist/pre_page.dart';
-import 'package:simple_todolist/dashboard.dart';
-import 'package:simple_todolist/model/todo_class.dart';
 import 'package:simple_todolist/model/todo_class.dart';
 
 class EditTask extends StatefulWidget {
@@ -26,7 +23,6 @@ class _EditTaskState extends State<EditTask> {
         widget.task.todoType == "Priority" ? "Priority Task" : "Daily Task";
   }
 
-  final todoLists = ToDoClass.todoList();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _startDateController = TextEditingController();
   final TextEditingController _endDateController = TextEditingController();
@@ -41,9 +37,9 @@ class _EditTaskState extends State<EditTask> {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -70,18 +66,16 @@ class _EditTaskState extends State<EditTask> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(width: 48), // Placeholder for alignment
+                    const SizedBox(width: 48),
                   ],
                 ),
               ),
 
-              // Form
               SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Start & End Date
                     Row(
                       children: [
                         Expanded(
@@ -93,26 +87,18 @@ class _EditTaskState extends State<EditTask> {
                       ],
                     ),
                     const SizedBox(height: 16),
-
-                    // Title Field
                     _buildTextField(
                         'Title', _titleController, 'Enter task title'),
                     const SizedBox(height: 16),
-
-                    // Category Buttons
                     _buildCategorySelector(),
                     const SizedBox(height: 16),
-
-                    // Description Field
                     _buildTextField('Description', _descriptionController,
                         'Enter task details',
                         maxLines: 4),
                     const SizedBox(height: 16),
-
-                    // Create Task Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF5038BC),
+                        backgroundColor: const Color(0xFF5038BC),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -120,8 +106,8 @@ class _EditTaskState extends State<EditTask> {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         minimumSize: const Size(double.infinity, 0),
                       ),
-                      child: const Text('Save Changes'),
                       onPressed: _TodoEdit,
+                      child: const Text('Save Changes'),
                     ),
                   ],
                 ),
@@ -216,7 +202,7 @@ class _EditTaskState extends State<EditTask> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _selectedCategory == 'Priority Task'
-                      ? Color(0xFF5038BC)
+                      ? const Color(0xFF5038BC)
                       : Colors.grey[200],
                   foregroundColor: _selectedCategory == 'Priority Task'
                       ? Colors.white
@@ -235,7 +221,7 @@ class _EditTaskState extends State<EditTask> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _selectedCategory == 'Daily Task'
-                      ? Color(0xFF5038BC)
+                      ? const Color(0xFF5038BC)
                       : Colors.grey[200],
                   foregroundColor: _selectedCategory == 'Daily Task'
                       ? Colors.white
@@ -271,15 +257,15 @@ class _EditTaskState extends State<EditTask> {
 
   void _TodoEdit() {
     final updatedTask = ToDoClass(
-      id: widget.task.id, // Keep same ID
+      id: widget.task.id,
       todoText: _titleController.text,
       todoType: _selectedCategory == "Priority Task" ? "Priority" : "Daily",
       isDone: widget.task.isDone,
-      startDate: _startDateController.text, // Save updated start date
-      endDate: _endDateController.text, // Save updated end date
-      description: _descriptionController.text, // Save updated description
+      startDate: _startDateController.text,
+      endDate: _endDateController.text,
+      description: _descriptionController.text,
     );
 
-    Navigator.pop(context, updatedTask); // Send updated task back to Dashboard
+    Navigator.pop(context, updatedTask);
   }
 }

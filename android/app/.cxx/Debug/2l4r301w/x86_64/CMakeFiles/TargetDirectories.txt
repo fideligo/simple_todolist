@@ -1,0 +1,2 @@
+C:/Users/Fideligo/Documents/Kuliah/RISTEK/flutter/simple_todolist/android/app/.cxx/Debug/2l4r301w/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Fideligo/Documents/Kuliah/RISTEK/flutter/simple_todolist/android/app/.cxx/Debug/2l4r301w/x86_64/CMakeFiles/rebuild_cache.dir

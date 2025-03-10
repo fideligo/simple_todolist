@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_todolist/pre_page.dart';
-import 'package:simple_todolist/dashboard.dart';
 import 'package:simple_todolist/model/todo_class.dart';
 
 class AddTask extends StatefulWidget {
@@ -11,7 +9,6 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  final todoLists = ToDoClass.todoList();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _startDateController = TextEditingController();
   final TextEditingController _endDateController = TextEditingController();
@@ -26,9 +23,9 @@ class _AddTaskState extends State<AddTask> {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -55,18 +52,17 @@ class _AddTaskState extends State<AddTask> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(width: 48), // Placeholder for alignment
+                    const SizedBox(width: 48),
                   ],
                 ),
               ),
 
-              // Form
               SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Start & End Date
+                    // start n end date
                     Row(
                       children: [
                         Expanded(
@@ -79,25 +75,23 @@ class _AddTaskState extends State<AddTask> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Title Field
                     _buildTextField(
                         'Title', _titleController, 'Enter task title'),
                     const SizedBox(height: 16),
 
-                    // Category Buttons
                     _buildCategorySelector(),
                     const SizedBox(height: 16),
 
-                    // Description Field
+                    // deskripsi
                     _buildTextField('Description', _descriptionController,
                         'Enter task details',
                         maxLines: 4),
                     const SizedBox(height: 16),
 
-                    // Create Task Button
+                    // create task
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF5038BC),
+                        backgroundColor: const Color(0xFF5038BC),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -207,7 +201,7 @@ class _AddTaskState extends State<AddTask> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _selectedCategory == 'Priority Task'
-                      ? Color(0xFF5038BC)
+                      ? const Color(0xFF5038BC)
                       : Colors.grey[200],
                   foregroundColor: _selectedCategory == 'Priority Task'
                       ? Colors.white
@@ -226,7 +220,7 @@ class _AddTaskState extends State<AddTask> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _selectedCategory == 'Daily Task'
-                      ? Color(0xFF5038BC)
+                      ? const Color(0xFF5038BC)
                       : Colors.grey[200],
                   foregroundColor: _selectedCategory == 'Daily Task'
                       ? Colors.white
@@ -265,8 +259,14 @@ class _AddTaskState extends State<AddTask> {
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       todoText: TodoTaskName,
       todoType: _selectedCategory == "Priority Task" ? "Priority" : "Daily",
+      startDate:
+          _startDateController.text.isEmpty ? null : _startDateController.text,
+      endDate: _endDateController.text.isEmpty ? null : _endDateController.text,
+      description: _descriptionController.text.isEmpty
+          ? null
+          : _descriptionController.text,
     );
 
-    Navigator.pop(context, newTask); // Pass new task back to Dashboard
+    Navigator.pop(context, newTask);
   }
 }
