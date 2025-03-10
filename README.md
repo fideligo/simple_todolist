@@ -1,3 +1,14 @@
+# Aplikasi apa ini?
+- Aplikasi yang saya buat merupakan aplikasi To Do List, aplikasi yang memungkinkan seseorang untuk mencatat apa saja yang harus dia lakukan. Fitur dari aplikasi yang saya buat diantara lain adalah pembuatan akun, yang dimana memungkinkan suatu handphone menyimpan beberapa set to do list, tergantung akun mana yang digunakan.
+- pada awal dibuka nya aplikasi, to do lists kosong, untuk menambah to do list, user bisa membuat baru, kemudian TODO's yang sudah dibuat didelete maupun dihapus.
+- Pada profile section sendiri, user bisa memasang profile picture, untuk menghiasi akunnya.
+
+# Packages yang saya gunakan adalah intl, image_picker, dam hive
+- intl: package ini digunakan untuk internalisasi dan lokalisasi di flutter, contoh, mengganti format tanggal
+- image_picker: memungkinkan aplikasi untuk memilih gambar dari galeri atau mengambil gambar menggunakan kamera perangkat. Ini sangat berguna untuk aplikasi yang membutuhkan input gambar.
+- hive: untuk penyimpanan data lokal, Hive cocok untuk aplikasi yang membutuhkan penyimpanan lokal tanpa menggunakan SQLite atau database besar lainnya.
+
+
 # Apa yang saya pelajari dari project ini..
 
 Mengerjakan proyek Flutter To-Do List telah memberikan saya banyak pelajaran berharga, baik dalam hal teknis maupun pelajaran hidup. Proses ini mengajarkan saya menghadapi tantangan, bersikap sabar, dan memanfaatkan sumber daya secara bijak.
